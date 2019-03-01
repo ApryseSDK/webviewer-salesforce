@@ -1,0 +1,47 @@
+<template>
+    <lightning-card  title="Controller" >
+        <div class="slds-var-p-around_medium">
+            <lightning-combobox
+                class="slds-p-bottom_medium"
+                name="progress"
+                label="Choose a file to view"
+                value={value}
+                placeholder="Select file"
+                options={options}
+                onchange={handleChange} ></lightning-combobox>
+            <lightning-input 
+                class="slds-p-bottom_small"
+                type="url" 
+                label="Or pass a url to a document" 
+                name="input1" 
+                value={fileUrl} 
+                onchange={handleUrlInput}>
+            </lightning-input>
+            <lightning-button 
+                class="slds-p-bottom_medium"
+                label="Submit" 
+                title="Submit" 
+                onclick={handleButton}>
+            </lightning-button>
+            <lightning-input class="slds-p-top_medium" type="file" label="Or choose your own" onchange={handleFilePick}></lightning-input>
+            
+            
+        </div>
+        <h2 class="slds-card__header slds-text-heading_small">Instructions</h2>
+        <div class="slds-var-p-around_medium slds-p-top_none">
+            <p>Use the dropdown above to view local or remote documents. Out of the box, WebViewer can load the following file types:</p>
+            <ul class="slds-p-top_x-small slds-p-bottom_x-small slds-p-left_large">
+                <li>.pdf</li>
+                <li>.jpg</li>
+                <li>.jpeg</li>
+                <li>.png</li>
+                <li>.docx</li>
+                <li>.xlsx</li>
+                <li>.pptx</li>
+                <li>.md</li>
+                <li>.xod</li>
+            </ul>
+            <p>You can also open password-protected PDF. The password is `foobar12`.</p>
+        </div>
+    </lightning-card>
+</template>

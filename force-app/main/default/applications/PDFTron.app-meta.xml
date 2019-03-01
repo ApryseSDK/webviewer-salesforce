@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#266DE7</headerColor>
+        <logo>logopdftronsquare</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Easy-to-digest code examples for Lightning Web Components</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>PDFTron</label>
+    <navType>Standard</navType>
+    <tabs>WebViewer</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>PDFTron_UtilityBar</utilityBar>
+</CustomApplication>
