@@ -4,10 +4,6 @@ window.CoreControls.setOfficeWorkerPath('/resource/office')
 window.CoreControls.setPDFResourcePath('/resource/resource')
 window.CoreControls.setPDFAsmPath('/resource/asm')
 
-// $(document).on('viewerLoaded', function() {
-//   custom = JSON.parse(window.ControlUtils.getCustomData());
-//   console.log(custom.startPage); // outputs 10
-// });
 
 window.sampleL = 'YOUR_LICENSE_KEY_HERE'; // enter your key here so that the samples will run
 

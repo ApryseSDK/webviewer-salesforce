@@ -127,4 +127,4 @@ export default class WebViewer extends LightningElement {
 [zip_files]: misc/files.png "Zip files"
 [pdftron_app]: misc/pdftron_app.png "PDFTron app"
 [webviewer]: misc/webviewer.png "WebViewer"
-[app_launcher]: misc/app_launcher2.png "App Launcher"
+[app_launcher]: misc/app_launcher.png "App Launcher"
