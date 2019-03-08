@@ -11,3 +11,4 @@ force-app/main/default/staticresources/officeResource
 force-app/main/default/staticresources/external
 *.zip
 .sfdx
+.vscode
