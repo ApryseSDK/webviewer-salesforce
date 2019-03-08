@@ -1,8 +1,8 @@
 
 
-# How to Add a PDFTron WebViewer to Salesforce as a Lighting Web Component
+# How to Add a PDFTron WebViewer to Salesforce as a Lightning Web Component
 
-The quickest way to getting started with WebViewer in Salesforce is to clone sample project from Github repo. Use sample project configuration files and sample Lighting Web Component for WebViewer to try out. You will also need to download PDFTron WebViewer build from https://www.pdftron.com/downloads/ and run npm script to optimize the source code for Salesforce. This optimization process produces zip files of size 5 MB or less, which enables you to safely upload to the Salesforce platform.
+The quickest way to getting started with WebViewer in Salesforce is to clone sample project from Github repo. Use sample project configuration files and sample Lightning Web Component for WebViewer to try out. You will also need to download PDFTron WebViewer build from https://www.pdftron.com/downloads/ and run npm script to optimize the source code for Salesforce. This optimization process produces zip files of size 5 MB or less, which enables you to safely upload to the Salesforce platform.
 ## Optimizing WebViewer Source Code for Salesforce
 
 Before starting sample Github project for Salesforce, you need to download your copy of WebViewer, extract WebView.zip into a folder, and run optimization script from command line.
@@ -75,8 +75,8 @@ window.CoreControls.setPDFResourcePath('/resource/resource');
 window.CoreControls.setPDFAsmPath('/resource/asm');
 ```
 
-### Communicating with CoreControls from Lighting Web Component
-On the Salesforce platform, Lighting Web Component have limits accessing to WebViewer’s iframe due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lighting Component can use limited communication mechanism between components using [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html). 
+### Communicating with CoreControls from Lightning Web Component
+On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s iframe due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html). 
 
 Here is implementation of the postMessage mechanism used in our sample github project and you can use this similar approach to communicate with the iframe’s contentWindow.
 
@@ -96,7 +96,7 @@ function receiveMessage(event) {
   }
 }
 ```
-and in the Lighting Web Component send messages with postMessage as following:
+and in the Lightning Web Component send messages with postMessage as following:
 
 ```js
 import { LightningElement, track, wire } from 'lwc';
