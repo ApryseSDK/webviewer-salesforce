@@ -9,7 +9,7 @@ window.CoreControls.setPDFAsmPath('/resource/asm')
 //   console.log(custom.startPage); // outputs 10
 // });
 
-window.sampleL = ''; // enter your key here so that the samples will run
+window.sampleL = 'YOUR_LICENSE_KEY_HERE'; // enter your key here so that the samples will run
 
 if (!window.sampleL) {
   window.sampleL = localStorage.getItem('wv-sample-license-key') || window.location.search.slice(5);
