@@ -1,7 +1,8 @@
 
 
 # How to Add a PDFTron WebViewer to Salesforce as a Lightning Web Component
-
+This project contains the source code for this [blog post](https://www.pdftron.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc/)
+<!-- 
 The quickest way to getting started with WebViewer in Salesforce is to clone sample project from Github repo. Use sample project configuration files and sample Lightning Web Component for WebViewer to try out. You will also need to download PDFTron WebViewer build from https://www.pdftron.com/downloads/ and run npm script to optimize the source code for Salesforce. This optimization process produces zip files of size 5 MB or less, which enables you to safely upload to the Salesforce platform.
 ## Optimizing WebViewer Source Code for Salesforce
 
@@ -127,4 +128,4 @@ export default class WebViewer extends LightningElement {
 [zip_files]: misc/files.png "Zip files"
 [pdftron_app]: misc/pdftron_app.png "PDFTron app"
 [webviewer]: misc/webviewer.png "WebViewer"
-[app_launcher]: misc/app_launcher.png "App Launcher"
+[app_launcher]: misc/app_launcher.png "App Launcher" -->
