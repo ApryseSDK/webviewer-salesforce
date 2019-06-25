@@ -6,7 +6,7 @@ import libUrl from '@salesforce/resourceUrl/lib';
 import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
-export default class WebViewer extends LightningElement {
+export default class WebViewerComp extends LightningElement {
   @wire(CurrentPageReference) pageRef;
 
   connectedCallback() {
@@ -40,22 +40,21 @@ export default class WebViewer extends LightningElement {
   initUI() {
     let _this = this;
     var myObj = { foo: 'bar' };
-   
+
     var url = myfilesUrl + '/webviewer-demo-annotated.pdf';
     // var url = myfilesUrl + '/webviewer-demo-annotated.xod';
     // var url = myfilesUrl + '/word.docx';
 
     const viewerElement = this.template.querySelector('div')
-    const viewer = new PDFTron.WebViewer({
+    WebViewer({
       path: libUrl, // path to the PDFTron 'lib' folder on your server
       custom: JSON.stringify(myObj),
       initialDoc: url,
       config: myfilesUrl + '/config.js',
       // fullAPI: true,
-    }, viewerElement);
-
-    viewerElement.addEventListener('ready', function() {
+    }, viewerElement).then(instance => {
       _this.iframeWindow = viewerElement.querySelector('iframe').contentWindow
     })
+
   }
 }
