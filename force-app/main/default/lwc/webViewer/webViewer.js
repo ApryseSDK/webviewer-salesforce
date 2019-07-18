@@ -46,13 +46,15 @@ export default class WebViewerComp extends LightningElement {
     // var url = myfilesUrl + '/word.docx';
 
     const viewerElement = this.template.querySelector('div')
-    WebViewer({
+    const viewer = new PDFTron.WebViewer({
       path: libUrl, // path to the PDFTron 'lib' folder on your server
       custom: JSON.stringify(myObj),
       initialDoc: url,
       config: myfilesUrl + '/config.js',
       // fullAPI: true,
-    }, viewerElement).then(instance => {
+    }, viewerElement);
+
+    viewerElement.addEventListener('ready', function() {
       _this.iframeWindow = viewerElement.querySelector('iframe').contentWindow
     })
 
