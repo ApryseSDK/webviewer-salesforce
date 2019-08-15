@@ -129,3 +129,4 @@ export default class WebViewer extends LightningElement {
 [pdftron_app]: misc/pdftron_app.png "PDFTron app"
 [webviewer]: misc/webviewer.png "WebViewer"
 [app_launcher]: misc/app_launcher.png "App Launcher" -->
+![](https://onepixel.pdftron.com/webviewer-salesforce)
