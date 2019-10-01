@@ -6,7 +6,7 @@ import libUrl from '@salesforce/resourceUrl/lib';
 import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
-export default class WebViewer extends LightningElement {
+export default class WebViewerComp extends LightningElement {
   @wire(CurrentPageReference) pageRef;
 
   connectedCallback() {
@@ -58,5 +58,6 @@ export default class WebViewer extends LightningElement {
     viewerElement.addEventListener('ready', function() {
       _this.iframeWindow = viewerElement.querySelector('iframe').contentWindow
     })
+
   }
 }
