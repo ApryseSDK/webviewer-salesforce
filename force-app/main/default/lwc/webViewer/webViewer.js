@@ -39,8 +39,8 @@ export default class WebViewer extends LightningElement {
   }
   initUI() {
     let _this = this;
-    var myObj = { foo: 'bar' };
-   
+    var myObj = { libUrl: libUrl };
+
     var url = myfilesUrl + '/webviewer-demo-annotated.pdf';
     // var url = myfilesUrl + '/webviewer-demo-annotated.xod';
     // var url = myfilesUrl + '/word.docx';
@@ -52,6 +52,7 @@ export default class WebViewer extends LightningElement {
       initialDoc: url,
       config: myfilesUrl + '/config.js',
       // fullAPI: true,
+      enableFilePicker: true,
     }, viewerElement);
 
     viewerElement.addEventListener('ready', function() {
