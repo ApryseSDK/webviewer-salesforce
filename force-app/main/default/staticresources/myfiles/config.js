@@ -1,8 +1,12 @@
 window.CoreControls.forceBackendType('ems');
-window.CoreControls.setPDFWorkerPath('/resource')
+// PDF workers
+window.CoreControls.setPDFWorkerPath('/resource');
+window.CoreControls.setPDFResourcePath('/resource/resource');
+window.CoreControls.setPDFAsmPath('/resource/asm');
+// Office workers
 window.CoreControls.setOfficeWorkerPath('/resource/office')
-window.CoreControls.setPDFResourcePath('/resource/resource')
-window.CoreControls.setPDFAsmPath('/resource/asm')
+window.CoreControls.setOfficeAsmPath('/resource/officeAsm');
+window.CoreControls.setOfficeResourcePath('/resource/officeResource');
 
 
 window.addEventListener("message", receiveMessage, false);
