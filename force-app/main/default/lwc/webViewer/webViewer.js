@@ -18,7 +18,7 @@ export default class WebViewerComp extends LightningElement {
   }
 
   handleFileSelected(file) {
-    this.iframeWindow.postMessage({type: 'OPEN_DOCUMENT', file: file})
+    this.iframeWindow.postMessage({type: 'OPEN_DOCUMENT', file: file}, '*')
   }
 
   divHeight = 600;
