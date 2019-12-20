@@ -10,6 +10,7 @@ Before starting sample Github project for Salesforce, you need to download your 
 ```
 $ npm run optimize
 
+Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]: n
 Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
 Optimize: Will you be using the new UI? [y/n]:  y
 Optimize: Will you be converting all your documents to XOD? [y/n]: n
