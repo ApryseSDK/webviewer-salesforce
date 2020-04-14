@@ -51,7 +51,7 @@ export default class WebViewerComp extends LightningElement {
       custom: JSON.stringify(myObj),
       initialDoc: url,
       config: myfilesUrl + '/config.js',
-      // fullAPI: true,
+      fullAPI: true,
       enableFilePicker: true,
     }, viewerElement);
 

@@ -3,13 +3,13 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/file-picker-combobox": [
+            "c/filePickerCombobox": [
                 "filePickerCombobox/filePickerCombobox.js"
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
             ],
-            "c/web-viewer": [
+            "c/webViewer": [
                 "webViewer/webViewer.js"
             ]
         }
@@ -17,5 +17,10 @@
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"
-    ]
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
 }
