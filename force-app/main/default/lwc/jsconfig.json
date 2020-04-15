@@ -11,6 +11,15 @@
             ],
             "c/web-viewer": [
                 "webViewer/webViewer.js"
+            ],
+            "c/wvFileBrowserComponent": [
+                "wvFileBrowserComponent/wvFileBrowserComponent.js"
+            ],
+            "c/wvInstance": [
+                "wvInstance/wvInstance.js"
+            ],
+            "c/webViewer": [
+                "webViewer/webViewer.js"
             ]
         }
     },

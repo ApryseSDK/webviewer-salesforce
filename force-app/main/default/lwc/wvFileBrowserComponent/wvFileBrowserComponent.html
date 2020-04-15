@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Content Versions">
+      <lightning-datatable
+                key-field="Id"
+                data={contentVersions}
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection}
+                columns={columns}
+                onrowaction={handleRowAction}
+                onsort={updateColumnSorting}>
+      </lightning-datatable>
+    </lightning-card>
+</template>

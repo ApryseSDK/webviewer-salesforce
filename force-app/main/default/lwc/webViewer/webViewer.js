@@ -7,6 +7,7 @@ import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 export default class WebViewerComp extends LightningElement {
+  fullAPI = false;
   @wire(CurrentPageReference) pageRef;
 
   connectedCallback() {
@@ -38,8 +39,11 @@ export default class WebViewerComp extends LightningElement {
     .catch(console.error);
   }
   initUI() {
-    let _this = this;
-    var myObj = { libUrl: libUrl };
+    var myObj = {
+      libUrl: libUrl,
+      fullAPI: this.fullAPI,
+      namespacePrefix: '',
+    };
 
     var url = myfilesUrl + '/webviewer-demo-annotated.pdf';
     // var url = myfilesUrl + '/webviewer-demo-annotated.xod';
@@ -51,12 +55,12 @@ export default class WebViewerComp extends LightningElement {
       custom: JSON.stringify(myObj),
       initialDoc: url,
       config: myfilesUrl + '/config.js',
-      // fullAPI: true,
+      fullAPI:  this.fullAPI,
       enableFilePicker: true,
     }, viewerElement);
 
-    viewerElement.addEventListener('ready', function() {
-      _this.iframeWindow = viewerElement.querySelector('iframe').contentWindow
+    viewerElement.addEventListener('ready', () => {
+      this.iframeWindow = viewerElement.querySelector('iframe').contentWindow
     })
 
   }

@@ -13,6 +13,7 @@
     <label>PDFTron</label>
     <navType>Standard</navType>
     <tabs>WebViewer</tabs>
+    <tabs>File_Browser</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>PDFTron_UtilityBar</utilityBar>
 </CustomApplication>
