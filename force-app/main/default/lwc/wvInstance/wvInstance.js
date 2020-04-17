@@ -88,7 +88,7 @@ export default class WvInstance extends LightningElement {
       // initialDoc: url,
       backendType: 'ems',
       // preloadWorker: 'all',
-      config: myfilesUrl + '/config.js',
+      config: myfilesUrl + '/config_apex.js',
       fullAPI: this.fullAPI,
       enableFilePicker: this.enableFilePicker,
       enableRedaction: this.enableRedaction,
