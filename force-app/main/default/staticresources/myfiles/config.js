@@ -1,9 +1,55 @@
+var resourceURL = '/resource/'
 window.CoreControls.forceBackendType('ems');
-// PDF workers
-window.CoreControls.setPDFWorkerPath('/resource');
-window.CoreControls.setPDFResourcePath('/resource/resource');
-window.CoreControls.setPDFAsmPath('/resource/asm');
-// Office workers
-window.CoreControls.setOfficeWorkerPath('/resource/office')
-window.CoreControls.setOfficeAsmPath('/resource/officeAsm');
-window.CoreControls.setOfficeResourcePath('/resource/officeResource');
+
+window.addEventListener('viewerLoaded', () => {
+  custom = JSON.parse(readerControl.getCustomData());
+
+  const namespacePrefix = custom.namespacePrefix;
+  resourceURL = resourceURL + namespacePrefix;
+
+  // office workers
+  window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
+  window.CoreControls.setOfficeAsmPath(resourceURL + 'officeAsm');
+  window.CoreControls.setOfficeResourcePath(resourceURL + 'officeResource');
+
+  // pdf workers
+  window.CoreControls.setPDFWorkerPath(resourceURL)
+  window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
+  window.CoreControls.setPDFAsmPath(resourceURL +'asm');
+
+  // external 3rd party libraries
+  window.CoreControls.setExternalPath(resourceURL + 'external')
+
+  window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
+});
+
+
+
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  if (event.isTrusted && typeof event.data === 'object') {
+    switch (event.data.type) {
+      case 'OPEN_DOCUMENT':
+        event.target.readerControl.loadDocument(event.data.file, {
+          officeOptions: {
+            disableBrowserFontSubstitution: true,
+          }
+        })
+        break;
+      case 'OPEN_DOCUMENT_BLOB':
+        const { blob, extension, filename, documentId } = event.data.payload;
+        event.target.readerControl.loadDocument(blob, { extension, filename, documentId,
+          officeOptions: {
+            disableBrowserFontSubstitution: true,
+          }
+        })
+        break;
+      case 'CLOSE_DOCUMENT':
+        event.target.readerControl.closeDocument()
+        break;
+      default:
+        break;
+    }
+  }
+}
