@@ -14,7 +14,7 @@ export default class FilePickerCombobox extends LightningElement {
     }
     handleButton(event) {
         fireEvent(this.pageRef, 'fileSelected', this.fileUrl);
-    } 
+    }
 
     handleFilePick(event) {
         console.log(event.target.files[0])
@@ -37,6 +37,16 @@ export default class FilePickerCombobox extends LightningElement {
             { label: 'compressed.tracemonkey-pldi-09.pdf', value: myfilesUrl + '/compressed.tracemonkey-pldi-09.pdf' },
             { label: 'webviewer-demo-annotated.xod', value: myfilesUrl + '/webviewer-demo-annotated.xod' },
             { label: 'word.docx', value: myfilesUrl + '/word.docx' },
+            { label: 'Issue2_Original_Docx_File.docx', value: myfilesUrl + '/Issue2_Original_Docx_File.docx' },
+            { label: 'Issue2_Original_Docx_File_(2).docx', value: myfilesUrl + '/Issue2_Original_Docx_File_(2).docx' },
+            { label: 'Issue4_Original.docx', value: myfilesUrl + '/Issue4_Original.docx' },
+            { label: 'Issue6_Original_Docx.docx', value: myfilesUrl + '/Issue6_Original_Docx.docx' },
+            { label: 'MB_2_Line_Items_Version_2.docx', value: myfilesUrl + '/MB_2_Line_Items_Version_2.docx' },
+            { label: 'OriginalDocument.docx', value: myfilesUrl + '/OriginalDocument.docx' },
+            { label: 'US-3050-FR-Helvetica_Change_Contract_Long_template_V2.1.docx', value: myfilesUrl + '/US-3050-FR-Helvetica_Change_Contract_Long_template_V2.1.docx' },
+            { label: 'Version_25_expected.pdf', value: myfilesUrl + '/Version_25_expected.pdf' },
+            { label: 'WeirdEmbeddedFonts.docx', value: myfilesUrl + '/WeirdEmbeddedFonts.docx' },
+            { label: 'Zurich_Version_1.docx', value: myfilesUrl + '/Zurich_Version_1.docx' },
         ];
     }
 

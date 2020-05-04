@@ -7,7 +7,7 @@ import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 export default class WebViewerComp extends LightningElement {
-  fullAPI = false;
+  fullAPI = true;
   @wire(CurrentPageReference) pageRef;
 
   connectedCallback() {
@@ -55,7 +55,7 @@ export default class WebViewerComp extends LightningElement {
       custom: JSON.stringify(myObj),
       initialDoc: url,
       config: myfilesUrl + '/config.js',
-      fullAPI:  this.fullAPI,
+      fullAPI: this.fullAPI,
       enableFilePicker: true,
     }, viewerElement);
 
