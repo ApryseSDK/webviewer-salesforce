@@ -9,13 +9,13 @@ window.addEventListener('viewerLoaded', () => {
 
   // office workers
   window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
-  window.CoreControls.setOfficeAsmPath(resourceURL + 'officeAsm');
-  window.CoreControls.setOfficeResourcePath(resourceURL + 'officeResource');
+  window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
+  window.CoreControls.setOfficeResourcePath(resourceURL + 'office_resource');
 
   // pdf workers
-  window.CoreControls.setPDFWorkerPath(resourceURL)
+  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_lean')
   window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
-  window.CoreControls.setPDFAsmPath(resourceURL +'asm');
+  window.CoreControls.setPDFAsmPath(resourceURL +'asm_lean');
 
   // external 3rd party libraries
   window.CoreControls.setExternalPath(resourceURL + 'external')
