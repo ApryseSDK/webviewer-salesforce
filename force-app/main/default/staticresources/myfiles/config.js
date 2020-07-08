@@ -1,27 +1,29 @@
-var resourceURL = '/resource/'
+var resourceURL = '/webviewer-salesforce/'
 window.CoreControls.forceBackendType('ems');
 
-window.addEventListener('viewerLoaded', () => {
-  custom = JSON.parse(readerControl.getCustomData());
+var urlSearch = new URLSearchParams(location.hash)
+var custom = JSON.parse(urlSearch.get('custom'));
+resourceURL = resourceURL + custom.namespacePrefix;
 
-  const namespacePrefix = custom.namespacePrefix;
-  resourceURL = resourceURL + namespacePrefix;
+// office workers
+window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
+window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
+window.CoreControls.setOfficeResourcePath(resourceURL + 'office_resource');
 
-  // office workers
-  window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
-  window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
-  window.CoreControls.setOfficeResourcePath(resourceURL + 'office_resource');
-
-  // pdf workers
+// pdf workers
+window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
+if (custom.fullAPI) {
+  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_full')
+  window.CoreControls.setPDFAsmPath(resourceURL +'asm_full');
+} else {
   window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_lean')
-  window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
   window.CoreControls.setPDFAsmPath(resourceURL +'asm_lean');
+}
 
-  // external 3rd party libraries
-  window.CoreControls.setExternalPath(resourceURL + 'external')
+// external 3rd party libraries
+window.CoreControls.setExternalPath(resourceURL + 'external')
+window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 
-  window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
-});
 
 
 
