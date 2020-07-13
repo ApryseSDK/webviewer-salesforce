@@ -38,6 +38,11 @@ Optimize: Do you need to deploy to salesforce? [y/n]: y
 This optimization process produces zip files of size 5 MB or less, which enables
 you to safely upload to the Salesforce platform.
 
+Note that in certain circumstances, you may need the full PDF API. For more
+details on when you may need to enable it, see:
+
+https://www.pdftron.com/documentation/web/guides/full-api-overview/
+
 4. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
 ![Zip files][zip_files]
