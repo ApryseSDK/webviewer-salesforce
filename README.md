@@ -1,9 +1,8 @@
-
-
 # How to Add a PDFTron WebViewer to Salesforce as a Lightning Web Component
 This project contains the source code for this [blog post](https://www.pdftron.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc/)
 
-The quickest way to getting started with WebViewer in Salesforce is to clone this repository, which provides sample project configuration files and sample Lightning Web Component for WebViewer to try out.
+The quickest way to getting started with WebViewer in Salesforce is to follow
+the instructions below.
 
 ## Requirements
 
