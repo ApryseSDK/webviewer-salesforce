@@ -10,8 +10,6 @@ The quickest way to getting started with WebViewer in Salesforce is to clone thi
 * [PDFTron WebViewer](https://www.pdftron.com/downloads/)
 * [Node and NPM](https://nodejs.org/en/)
 
-You will also need to download the latest build from and run the command `npm run optimize` to optimize the source code for Salesforce.
-
 ## Optimizing WebViewer Source Code for Salesforce
 
 Extract `WebViewer.zip` into a folder, and run the following optimization script:
