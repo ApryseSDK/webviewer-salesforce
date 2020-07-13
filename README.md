@@ -14,7 +14,7 @@ You will also need to download the latest build from and run the command `npm ru
 
 ## Optimizing WebViewer Source Code for Salesforce
 
-Before starting sample Github project for Salesforce, you need to download your copy of WebViewer, extract WebView.zip into a folder, and run optimization script from command line.
+Extract `WebViewer.zip` into a folder, and run the following optimization script:
 ```
 $ npm run optimize
 
