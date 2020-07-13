@@ -46,7 +46,9 @@ https://www.pdftron.com/documentation/web/guides/full-api-overview/
 
 ![Zip files][zip_files]
 
-5. Add your license key in `staticresources/myfiles/config.js`.
+5. If you have a paid license key, you can remove the watermark from rendered
+documents by adding the key to the `PDFTron.WebViewer` constructor here
+[`./force-app/main/default/lwc/webViewer/webViewer.js`](./force-app/main/default/lwc/webViewer/webViewer.js#L53).
 
 6. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
 ```

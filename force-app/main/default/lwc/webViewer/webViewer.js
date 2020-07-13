@@ -57,6 +57,7 @@ export default class WebViewerComp extends LightningElement {
       config: myfilesUrl + '/config.js',
       fullAPI:  this.fullAPI,
       enableFilePicker: true,
+      // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
     viewerElement.addEventListener('ready', () => {
