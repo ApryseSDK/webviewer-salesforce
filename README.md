@@ -19,12 +19,12 @@ Extract `WebViewer.zip` into a folder, and run the following optimization script
 $ npm run optimize
 
 Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]: n
-Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
-Optimize: Will you be using the new UI? [y/n]:  y
+Optimize: Do you want us to backup your files before optimizing? [y/n]: y
+Optimize: Will you be using the new UI? [y/n]: y
 Optimize: Will you be converting all your documents to XOD? [y/n]: n
 Optimize: Do you need client side office viewing support? [y/n]: y
-Do you need the full PDF API? [y/n]:  n
-Optimize: Do you need to deploy to salesforce? [y/n]:  y
+Do you need the full PDF API? [y/n]: n
+Optimize: Do you need to deploy to salesforce? [y/n]: y
 ```
 
 Answer `y` for the question `Do you need to deploy to salesforce?` Copy generated zip files from `webviewer-salesforce` folder into `staticresources` folder of the sample Github project "lwc-webviewer" which we will do next.
