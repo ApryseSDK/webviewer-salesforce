@@ -10,24 +10,6 @@ The quickest way to getting started with WebViewer in Salesforce is to clone thi
 * [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download)
 * [Node and NPM](https://nodejs.org/en/)
 
-## Optimizing WebViewer Source Code for Salesforce
-
-Extract `WebViewer.zip` into a folder, and run the following optimization script:
-```
-$ npm run optimize
-
-Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]: n
-Optimize: Do you want us to backup your files before optimizing? [y/n]: y
-Optimize: Will you be using the new UI? [y/n]: y
-Optimize: Will you be converting all your documents to XOD? [y/n]: n
-Optimize: Do you need client side office viewing support? [y/n]: y
-Do you need the full PDF API? [y/n]: n
-Optimize: Do you need to deploy to salesforce? [y/n]: y
-```
-
-Answer `y` for the question `Do you need to deploy to salesforce?` Copy generated zip files from `webviewer-salesforce` folder into `staticresources` folder of the sample Github project "lwc-webviewer" which we will do next.
-
-
 ## Installing WebViewer Sample App using Salesforce DX
 1. Install Salesforce DX. Enable the Dev Hub in your org or sign up for a Dev Hub trial org and install the Salesforce DX CLI. Follow the instructions in the [Salesforce DX Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm?search_text=trial%20hub%20org) or in the [App Development with Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_app_dev) Trailhead module. The steps include:
    * Enable Dev Hub in you project
@@ -40,33 +22,49 @@ git clone git@github.com:PDFTron/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
-3. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
+3. Extract `WebViewer.zip`, and run the following optimization script:
+```
+$ npm run optimize
+
+Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]: n
+Optimize: Do you want us to backup your files before optimizing? [y/n]: y
+Optimize: Will you be using the new UI? [y/n]: y
+Optimize: Will you be converting all your documents to XOD? [y/n]: n
+Optimize: Do you need client side office viewing support? [y/n]: y
+Do you need the full PDF API? [y/n]: n
+Optimize: Do you need to deploy to salesforce? [y/n]: y
+```
+
+This optimization process produces zip files of size 5 MB or less, which enables
+you to safely upload to the Salesforce platform.
+
+4. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
 ![Zip files][zip_files]
 
-4. Add your license key in `staticresources/myfiles/config.js`.
+5. Add your license key in `staticresources/myfiles/config.js`.
 
-5. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
+6. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
 ```
 sfdx force:auth:web:login --setdefaultdevhubusername --setalias DevHub
 ```
 
-6. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the config/project-scratch-def.json file, set the **username** as your default, and assign it an alias.
+7. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the config/project-scratch-def.json file, set the **username** as your default, and assign it an alias.
 ```
 sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias my-scratch-org
 ```
 
-7. Push the app to your scratch org:
+8. Push the app to your scratch org:
 ```
 sfdx force:source:push -f
 ```
 
-8. Open the scratch org:
+9. Open the scratch org:
 ```
 sfdx force:org:open
 ```
 
-9. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click PDFTron.
+10. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click PDFTron.
 
 ![PDFTron app][pdftron_app]
 
