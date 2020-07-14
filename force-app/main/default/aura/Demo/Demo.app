@@ -1,15 +1,14 @@
 <aura:application extends="force:slds">
+  <ltng:require scripts="{!join(',',
+        $Resource.lib + '/webviewer.min.js')}" afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+
   <!-- Stand-alone static resources -->
-  
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
   <div class="slds-text-heading_large slds-text-align_center slds-box">
-    My Demo app
+      My Demo app
   </div>
 
-  <div class="slds-grid slds-gutters">
-    <div class="slds-col">
-      <c:webViewer />
-    </div>
-
-  </div>
+  <div id="viewer"></div>
 
 </aura:application>
