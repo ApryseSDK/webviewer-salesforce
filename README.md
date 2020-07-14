@@ -21,7 +21,9 @@ git clone git@github.com:PDFTron/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
-3. Extract `WebViewer.zip`, and run the following optimization script:
+3. Extract `WebViewer.zip`, `cd` to the directory the contents were extracted
+into, and run the following optimization script:
+
 ```
 $ npm run optimize
 
