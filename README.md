@@ -9,14 +9,13 @@ The quickest way to getting started with WebViewer in Salesforce is to clone sam
 Before starting sample Github project for Salesforce, you need to download your copy of WebViewer, extract WebView.zip into a folder, and run optimization script from command line.
 ```
 $ npm run optimize
-
-Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]: n
 Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
-Optimize: Will you be using the new UI? [y/n]:  y
-Optimize: Will you be converting all your documents to XOD? [y/n]: n
-Optimize: Do you need client side office viewing support? [y/n]: y
-Do you need the full PDF API? [y/n]:  n
-Optimize: Do you need to deploy to salesforce? [y/n]:  y
+Optimize: Will you be using WebViewer Server? ... [y/n]:  n
+Optimize: Will you be converting all your documents to XOD? ... [y/n]:  n
+Optimize: Do you need client side office support? [y/n]:  y
+Optimize: Do you need the full PDF API? ... [y/n]:  y
+Optimize: Do you want to use the production version of PDFNet.js? ... [y/n]:  n
+Optimize: Do you need to deploy to Salesforce? ... [y/n]:  y
 ```
 
 Answer `y` for the question `Do you need to deploy to salesforce?` Copy generated zip files from `webviewer-salesforce` folder into `staticresources` folder of the sample Github project "lwc-webviewer" which we will do next.
@@ -70,11 +69,32 @@ sfdx force:org:open
 ### Setting Worker Paths in config.js
 Since we optimized the original WebViewer source code for the Salesforce platform earlier, we also need to set few paths in config.js in order WebViewer to function properly. Open `config.js` file under `myfiles` folder and paste the following:
 ```js
+var resourceURL = '/resource/'
 window.CoreControls.forceBackendType('ems');
-window.CoreControls.setPDFWorkerPath('/resource');
-window.CoreControls.setOfficeWorkerPath('/resource/office');
-window.CoreControls.setPDFResourcePath('/resource/resource');
-window.CoreControls.setPDFAsmPath('/resource/asm');
+
+var urlSearch = new URLSearchParams(location.hash)
+var custom = JSON.parse(urlSearch.get('custom'));
+
+resourceURL = resourceURL + custom.namespacePrefix;
+
+// office workers
+window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
+window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
+window.CoreControls.setOfficeResourcePath(resourceURL + 'office_resource');
+
+// pdf workers
+window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
+if (custom.fullAPI) {
+  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_full')
+  window.CoreControls.setPDFAsmPath(resourceURL +'asm_full');
+} else {
+  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_lean')
+  window.CoreControls.setPDFAsmPath(resourceURL +'asm_lean');
+}
+
+// external 3rd party libraries
+window.CoreControls.setExternalPath(resourceURL + 'external')
+window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 ```
 
 ### Communicating with CoreControls from Lightning Web Component
@@ -106,15 +126,23 @@ import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import libUrl from '@salesforce/resourceUrl/lib';
 
 export default class WebViewer extends LightningElement {
-  
+
   handleFileSelected(file) {
     this.iframeWindow.postMessage({type: 'OPEN_DOCUMENT', file: file})
   }
-  
+
   initUI() {
+    const myObj = {
+      libUrl: libUrl,
+      fullAPI: false,
+      namespacePrefix: '',
+    };
+
     const viewerElement = this.template.querySelector('div');
     const viewer = new PDFTron.WebViewer({
-      path: libUrl,
+      path: myObj.libUrl,
+      fullAPI: myObj.fullAPI,
+      custom: JSON.stringify(myObj),
       initialDoc: 'file.pdf',
       config: myfilesUrl + '/config.js',
     }, viewerElement);
@@ -126,7 +154,7 @@ export default class WebViewer extends LightningElement {
 }
 ```
 
-[zip_files]: misc/files.png "Zip files"
+[zip_files]: https://www.pdftron.com/static/152614d12bf83c31602bb8f5e4eef27c/zip-files.png "Zip files"
 [pdftron_app]: misc/pdftron_app.png "PDFTron app"
 [webviewer]: misc/webviewer.png "WebViewer"
 [app_launcher]: misc/app_launcher.png "App Launcher" -->
