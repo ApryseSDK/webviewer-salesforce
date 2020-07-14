@@ -64,7 +64,7 @@ documents by adding the key to the `PDFTron.WebViewer` constructor here
 sfdx force:auth:web:login --setdefaultdevhubusername --setalias DevHub
 ```
 
-7. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the config/project-scratch-def.json file, set the **username** as your default, and assign it an alias.
+7. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the `config/project-scratch-def.json` file, set the **username** as your default, and assign it an alias.
 ```
 sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias my-scratch-org
 ```
