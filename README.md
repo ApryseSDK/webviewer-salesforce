@@ -31,15 +31,23 @@ $ npm run optimize
 
 Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
 
-Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]:  n
+Optimize: Will you be using WebViewer Server? See
+https://www.pdftron.com/documentation/web/guides/wv-server/ for more info.
+[y/n]:  n
 
-Optimize: Will you be converting all your documents to XOD? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info. [y/n]:  n
+Optimize: Will you be converting all your documents to XOD? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info. [y/n]:  n
 
 Optimize: Do you need client side office support? [y/n]:  y
 
-Optimize: Do you need the full PDF API? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  n
+Optimize: Do you need the full PDF API? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info (most users dont need this option). [y/n]:  n
 
-Optimize: Do you need to deploy to Salesforce? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
+Optimize: Do you need to deploy to Salesforce? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info (most users dont need this option). [y/n]:  y
 ```
 
 This optimization process produces zip files of size 5 MB or less, which enables
