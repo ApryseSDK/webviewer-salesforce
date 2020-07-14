@@ -52,6 +52,9 @@ https://www.pdftron.com/documentation/web/guides/full-api-overview/
 
 ![Zip files][zip_files]
 
+Every `*.zip` file should have a corresponding `*.resource-meta.xml` file, where
+the contents of each `.xml` file are the same.
+
 5. If you have a paid license key, you can remove the watermark from rendered
 documents by adding the key to the `PDFTron.WebViewer` constructor here
 [`./force-app/main/default/lwc/webViewer/webViewer.js`](./force-app/main/default/lwc/webViewer/webViewer.js#L53).
