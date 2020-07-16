@@ -8,7 +8,7 @@ the instructions below.
 
 ## Requirements
 
-* [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download)
+* [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download) (Download `WebViewer.zip`)
 * [Node and NPM](https://nodejs.org/en/)
 
 ## Installing WebViewer Sample App using Salesforce DX
