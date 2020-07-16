@@ -96,16 +96,6 @@ sfdx force:org:open
 ![WebViewer][webviewer]
 
 ## Implementation Details for Developers
-### Setting Worker Paths in config.js
-Since we optimized the original WebViewer source code for the Salesforce platform earlier, we also need to set few paths in config.js in order WebViewer to function properly. Open `config.js` file under `myfiles` folder and paste the following:
-```js
-window.CoreControls.forceBackendType('ems');
-window.CoreControls.setPDFWorkerPath('/resource');
-window.CoreControls.setOfficeWorkerPath('/resource/office');
-window.CoreControls.setPDFResourcePath('/resource/resource');
-window.CoreControls.setPDFAsmPath('/resource/asm');
-```
-
 ### Communicating with CoreControls from Lightning Web Component
 On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s iframe due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html). 
 
