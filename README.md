@@ -97,9 +97,9 @@ sfdx force:org:open
 
 ## Implementation Details for Developers
 ### Communicating with CoreControls from Lightning Web Component
-On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s iframe due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html). 
+On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s `iframe` due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html).
 
-Here is implementation of the postMessage mechanism used in our sample github project and you can use this similar approach to communicate with the iframe’s contentWindow.
+Here is implementation of the `postMessage` mechanism used in our sample github project and you can use this similar approach to communicate with the `iframe`’s `contentWindow`.
 
 Inside `config.js` file, use following:
 ```js
