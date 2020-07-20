@@ -1,0 +1,13 @@
+<apex:page >
+  <div id="viewer" style="height: 600px"></div>
+  <apex:includeScript value="{!$Resource.lib}/webviewer.min.js"/>
+  <apex:includeScript value="{!$Resource.myfiles}/visualforce-page-viewing.js"/>
+	<script>
+    var param = {
+        lib: '{!$Resource.lib}',
+        myfiles: '{!$Resource.myfiles}',
+
+    }
+    initWebViewer(param);
+  </script>
+</apex:page>

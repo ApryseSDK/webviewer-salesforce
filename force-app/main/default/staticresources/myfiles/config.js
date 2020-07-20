@@ -1,4 +1,4 @@
-var resourceURL = '/webviewer-salesforce/'
+var resourceURL = '/resource/'
 window.CoreControls.forceBackendType('ems');
 
 var urlSearch = new URLSearchParams(location.hash)
