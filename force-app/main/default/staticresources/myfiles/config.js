@@ -5,6 +5,11 @@ var urlSearch = new URLSearchParams(location.hash)
 var custom = JSON.parse(urlSearch.get('custom'));
 resourceURL = resourceURL + custom.namespacePrefix;
 
+/**
+ * The following `window.CoreControls.set*` functions point WebViewer to the
+ * optimized source code specific for the Salesforce platform, to ensure the
+ * uploaded files stay under the 5mb limit
+ */
 // office workers
 window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
 window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
