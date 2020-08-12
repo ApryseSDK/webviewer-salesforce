@@ -1,31 +1,22 @@
-
-
 # How to Add a PDFTron WebViewer to Salesforce as a Lightning Web Component
-This project contains the source code for this [blog post](https://www.pdftron.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc/)
-<!-- 
-The quickest way to getting started with WebViewer in Salesforce is to clone sample project from Github repo. Use sample project configuration files and sample Lightning Web Component for WebViewer to try out. You will also need to download PDFTron WebViewer build from https://www.pdftron.com/downloads/ and run npm script to optimize the source code for Salesforce. This optimization process produces zip files of size 5 MB or less, which enables you to safely upload to the Salesforce platform.
-## Optimizing WebViewer Source Code for Salesforce
+This project contains the source code for this [blog post](https://www.pdftron.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc/) or you can [watch a video](https://youtu.be/NdRg-RnlC5g) instead.
 
-Before starting sample Github project for Salesforce, you need to download your copy of WebViewer, extract WebView.zip into a folder, and run optimization script from command line.
-```
-$ npm run optimize
-Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
-Optimize: Will you be using WebViewer Server? ... [y/n]:  n
-Optimize: Will you be converting all your documents to XOD? ... [y/n]:  n
-Optimize: Do you need client side office support? [y/n]:  y
-Optimize: Do you need the full PDF API? ... [y/n]:  y
-Optimize: Do you want to use the production version of PDFNet.js? ... [y/n]:  n
-Optimize: Do you need to deploy to Salesforce? ... [y/n]:  y
-```
+![WebViewer][webviewer]
 
-Answer `y` for the question `Do you need to deploy to salesforce?` Copy generated zip files from `webviewer-salesforce` folder into `staticresources` folder of the sample Github project "lwc-webviewer" which we will do next.
+The quickest way to getting started with WebViewer in Salesforce is to follow
+the instructions below.
 
+## Requirements
+
+* [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download) (Download `WebViewer.zip`)
+* [Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
+* [Node and NPM](https://nodejs.org/en/)
 
 ## Installing WebViewer Sample App using Salesforce DX
 1. Install Salesforce DX. Enable the Dev Hub in your org or sign up for a Dev Hub trial org and install the Salesforce DX CLI. Follow the instructions in the [Salesforce DX Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm?search_text=trial%20hub%20org) or in the [App Development with Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_app_dev) Trailhead module. The steps include:
-   * Enable Dev Hub in you project
-   * Install Salesforce CLI
-   * Install Visual Studio Code
+   * [Enable Dev Hub in you project](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_enable_devhub.htm)
+   * [Install Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
+   * (Optional) [Install Salesforce Extensions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)
 
 2. Clone the `webviewer-salesforce` from Github repo:
 ```
@@ -33,74 +24,84 @@ git clone git@github.com:PDFTron/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
-3. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
+3. Extract `WebViewer.zip`, `cd` to the directory the contents were extracted
+into, and run the following optimization script:
+
+```
+$ npm run optimize
+
+Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
+
+Optimize: Will you be using WebViewer Server? See
+https://www.pdftron.com/documentation/web/guides/wv-server/ for more info.
+[y/n]:  n
+
+Optimize: Will you be converting all your documents to XOD? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info. [y/n]:  n
+
+Optimize: Do you need client side office support? [y/n]:  y
+
+Optimize: Do you need the full PDF API? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info (most users dont need this option). [y/n]:  n
+
+Optimize: Do you need to deploy to Salesforce? See
+https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more
+info (most users dont need this option). [y/n]:  y
+```
+
+This optimization process produces zip files of size 5 MB or less, which enables
+you to safely upload to the Salesforce platform.
+
+Note that in certain circumstances, you may need the full PDF API. For more
+details on when you may need to enable it, see:
+
+https://www.pdftron.com/documentation/web/guides/full-api-overview/
+
+4. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
 ![Zip files][zip_files]
 
-4. Add your license key in `staticresources/myfiles/config.js`.
+Every `*.zip` file should have a corresponding `*.resource-meta.xml` file, where
+the contents of each `.xml` file are the same.
 
-5. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
+5. If you have a paid license key, you can remove the watermark from rendered
+documents by adding the key to the `PDFTron.WebViewer` constructor here
+[`./force-app/main/default/lwc/webViewer/webViewer.js`](./force-app/main/default/lwc/webViewer/webViewer.js#L53).
+
+6. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
 ```
 sfdx force:auth:web:login --setdefaultdevhubusername --setalias DevHub
 ```
 
-6. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the config/project-scratch-def.json file, set the **username** as your default, and assign it an alias.
+7. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the `config/project-scratch-def.json` file, set the **username** as your default, and assign it an alias.
 ```
 sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias my-scratch-org
 ```
 
-7. Push the app to your scratch org:
+8. Push the app to your scratch org:
 ```
 sfdx force:source:push -f
 ```
 
-8. Open the scratch org:
+9. Open the scratch org:
 ```
 sfdx force:org:open
 ```
 
-9. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click PDFTron.
+10. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click PDFTron.
 
 ![PDFTron app][pdftron_app]
 
 ![WebViewer][webviewer]
 
 ## Implementation Details for Developers
-### Setting Worker Paths in config.js
-Since we optimized the original WebViewer source code for the Salesforce platform earlier, we also need to set few paths in config.js in order WebViewer to function properly. Open `config.js` file under `myfiles` folder and paste the following:
-```js
-var resourceURL = '/resource/'
-window.CoreControls.forceBackendType('ems');
-
-var urlSearch = new URLSearchParams(location.hash)
-var custom = JSON.parse(urlSearch.get('custom'));
-
-resourceURL = resourceURL + custom.namespacePrefix;
-
-// office workers
-window.CoreControls.setOfficeWorkerPath(resourceURL + 'office')
-window.CoreControls.setOfficeAsmPath(resourceURL + 'office_asm');
-window.CoreControls.setOfficeResourcePath(resourceURL + 'office_resource');
-
-// pdf workers
-window.CoreControls.setPDFResourcePath(resourceURL + 'resource')
-if (custom.fullAPI) {
-  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_full')
-  window.CoreControls.setPDFAsmPath(resourceURL +'asm_full');
-} else {
-  window.CoreControls.setPDFWorkerPath(resourceURL+ 'pdf_lean')
-  window.CoreControls.setPDFAsmPath(resourceURL +'asm_lean');
-}
-
-// external 3rd party libraries
-window.CoreControls.setExternalPath(resourceURL + 'external')
-window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
-```
 
 ### Communicating with CoreControls from Lightning Web Component
-On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s iframe due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html). 
+On the Salesforce platform, Lightning Web Component have limits accessing to WebViewer’s `iframe` due to [LockerService](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html) requirements. Lightning Component can use limited communication mechanism between components using [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage). You can find more information about LockerService [here](https://developer.salesforce.com/blogs/developer-relations/2017/02/lockerservice-lightning-container-third-party-libraries-lightning-components.html).
 
-Here is implementation of the postMessage mechanism used in our sample github project and you can use this similar approach to communicate with the iframe’s contentWindow.
+Here is implementation of the `postMessage` mechanism used in our sample github project and you can use this similar approach to communicate with the `iframe`’s `contentWindow`.
 
 Inside `config.js` file, use following:
 ```js
@@ -157,5 +158,5 @@ export default class WebViewer extends LightningElement {
 [zip_files]: https://www.pdftron.com/static/152614d12bf83c31602bb8f5e4eef27c/zip-files.png "Zip files"
 [pdftron_app]: misc/pdftron_app.png "PDFTron app"
 [webviewer]: misc/webviewer.png "WebViewer"
-[app_launcher]: misc/app_launcher.png "App Launcher" -->
+[app_launcher]: misc/app_launcher.png "App Launcher"
 ![](https://onepixel.pdftron.com/webviewer-salesforce)
