@@ -1,7 +1,9 @@
 <apex:page >
-  <div id="viewer" style="height: 600px"></div>
+  <!-- <div id="viewer" style="height: 600px"></div> -->
   <apex:includeScript value="{!$Resource.lib}/core/CoreControls.js"/>
   <apex:includeScript value="{!$Resource.lib}/core/pdf/PDFNet.js"/>
+  <h2>Choose your own</h2>
+  <input id="file-picker" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx,.xlsx,.pptx,.md" />
 	<script>
     var resourceURL = '{!$Resource.lib}' + '/../'  || '/resource/'
 
@@ -22,6 +24,13 @@
     window.CoreControls.setExternalPath(resourceURL + 'external')
     // window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 
+    document.getElementById('file-picker').onchange = function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        console.log(file);
+        CoreControls.createDocument(file)
+      }
+    };
 
   </script>
 </apex:page>
