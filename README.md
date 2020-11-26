@@ -96,6 +96,23 @@ sfdx force:org:open
 
 ![WebViewer][webviewer]
 
+Note: Include the following to your profile `.xml` for application and tab access
+```xml
+    <applicationVisibilities>
+        <application>PDFTron</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <tabVisibilities>
+        <tab>File_Browser</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>WebViewer</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+```
+
 ## Implementation Details for Developers
 
 ### Communicating with CoreControls from Lightning Web Component
