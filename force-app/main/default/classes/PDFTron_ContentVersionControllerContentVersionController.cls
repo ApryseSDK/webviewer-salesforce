@@ -1,4 +1,4 @@
-public with sharing class ContentVersionController {
+public with sharing class PDFTron_ContentVersionController {
     @AuraEnabled(Cacheable=true)
     public static List<ContentVersion> getContentVersions() {
       return [SELECT Id, Title, FileExtension, IsMajorVersion, IsLatest, VersionData, IsAssetEnabled, LastModifiedDate
