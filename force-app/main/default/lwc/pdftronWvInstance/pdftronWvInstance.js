@@ -4,7 +4,7 @@ import { loadScript } from 'lightning/platformResourceLoader';
 import libUrl from '@salesforce/resourceUrl/lib';
 import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 /** ContentVersionController.getFileBlobById(id) Apex method */
-import getFileBlobById from '@salesforce/apex/ContentVersionController.getFileBlobById';
+import getFileBlobById from '@salesforce/apex/PDFTron_ContentVersionController.getFileBlobById';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import mimeTypes from './mimeTypes'
 
@@ -19,7 +19,7 @@ function _base64ToArrayBuffer(base64) {
 }
 
 
-export default class WvInstance extends LightningElement {
+export default class PdftronWvInstance extends LightningElement {
   source = 'My file';
   fullAPI = false;
   @track
