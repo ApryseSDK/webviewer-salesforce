@@ -6,7 +6,7 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>ContentVersionController</apexClass>
+        <apexClass>PDFTron_ContentVersionController</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <custom>true</custom>
