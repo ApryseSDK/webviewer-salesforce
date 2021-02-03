@@ -1,5 +1,0 @@
-<aura:component implements="lightning:isUrlAddressable,flexipage:availableForAllPageTypes"  description="c:helloTarget component">
-  <aura:handler name="change" value="{!v.pageReference}" action="{!c.reInit}"/>
-  <aura:handler event="aura:locationChange" action="{!c.update}"/>
-  <c:pdftronWvInstance />
-</aura:component>
