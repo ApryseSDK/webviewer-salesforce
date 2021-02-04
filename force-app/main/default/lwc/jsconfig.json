@@ -3,28 +3,38 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/file-picker-combobox": [
-                "filePickerCombobox/filePickerCombobox.js"
+            "c/pdftron-file-picker-combobox": [
+                "pdftronFilePickerCombobox/pdftronFilePickerCombobox.js"
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
             ],
-            "c/web-viewer": [
-                "webViewer/webViewer.js"
+            "c/pdftron-web-viewer": [
+                "pdftronWebViewer/pdftronWebViewer.js"
             ],
-            "c/wvFileBrowserComponent": [
-                "wvFileBrowserComponent/wvFileBrowserComponent.js"
+            "c/pdftronWvFileBrowserComponent": [
+                "pdfWvFileBrowserComponent/pdfWvFileBrowserComponent.js"
             ],
-            "c/wvInstance": [
-                "wvInstance/wvInstance.js"
+            "c/pdfWvInstance": [
+                "pdfWvInstance/pdfWvInstance.js"
             ],
-            "c/webViewer": [
-                "webViewer/webViewer.js"
+            "c/pdfWebViewer": [
+                "pdfWebViewer/pdfWebViewer.js"
             ]
         }
     },
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"
-    ]
+    ],
+    "paths": {
+        "c/*": [
+            "*"
+        ]
+    },
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
 }
