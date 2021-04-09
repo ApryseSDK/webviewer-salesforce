@@ -3,6 +3,5 @@
     <description>Created by Lightning App Builder</description>
     <flexiPage>WebViewer</flexiPage>
     <label>WebViewer</label>
-    <mobileReady>true</mobileReady>
     <motif>Custom27: Laptop</motif>
 </CustomTab>

@@ -3,6 +3,5 @@
     <description>Created by Lightning App Builder</description>
     <flexiPage>File_Browser</flexiPage>
     <label>File Browser</label>
-    <mobileReady>false</mobileReady>
     <motif>Custom13: Box</motif>
 </CustomTab>
