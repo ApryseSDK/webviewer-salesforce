@@ -7,7 +7,7 @@ import myfilesUrl from '@salesforce/resourceUrl/myfiles';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 export default class PdftronWebViewer extends LightningElement {
-  fullAPI = false;
+  fullAPI = true;
   @wire(CurrentPageReference) pageRef;
 
   connectedCallback() {
