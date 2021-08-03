@@ -1,7 +1,7 @@
 import { LightningElement, wire, track, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 /** ContentVersionController.getContentVersions() Apex method */
-import getContentVersions from '@salesforce/apex/ContentVersionController.getContentVersions';
+import getContentVersions from '@salesforce/apex/PDFTron_ContentVersionController.getContentVersions';
 
 const actions = [
   { label: 'Show details', name: 'show_details' },
@@ -26,7 +26,7 @@ const columns = [
 ];
 
 
-export default class WvFileBrowserComponent extends NavigationMixin(LightningElement) {
+export default class PdftronWvFileBrowserComponent extends NavigationMixin(LightningElement) {
   @api tabName;
   @api label;
   @track contentVersions;
