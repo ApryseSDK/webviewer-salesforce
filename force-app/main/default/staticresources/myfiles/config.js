@@ -38,7 +38,7 @@ function receiveMessage(event) {
   if (event.isTrusted && typeof event.data === 'object') {
     switch (event.data.type) {
       case 'OPEN_DOCUMENT':
-        event.target.readerControl.loadDocument(event.data.file, {
+        instance.loadDocument(event.data.file, {
           officeOptions: {
             disableBrowserFontSubstitution: true,
           }
@@ -46,14 +46,14 @@ function receiveMessage(event) {
         break;
       case 'OPEN_DOCUMENT_BLOB':
         const { blob, extension, filename, documentId } = event.data.payload;
-        event.target.readerControl.loadDocument(blob, { extension, filename, documentId,
+        instance.loadDocument(blob, { extension, filename, documentId,
           officeOptions: {
             disableBrowserFontSubstitution: true,
           }
         })
         break;
       case 'CLOSE_DOCUMENT':
-        event.target.readerControl.closeDocument()
+        instance.closeDocument()
         break;
       default:
         break;
