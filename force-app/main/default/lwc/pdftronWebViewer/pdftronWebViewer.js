@@ -50,7 +50,7 @@ export default class PdftronWebViewer extends LightningElement {
     // var url = myfilesUrl + '/word.docx';
 
     const viewerElement = this.template.querySelector('div')
-    const viewer = new PDFTron.WebViewer({
+    const viewer = new WebViewer({
       path: libUrl, // path to the PDFTron 'lib' folder on your server
       custom: JSON.stringify(myObj),
       initialDoc: url,
