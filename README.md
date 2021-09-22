@@ -122,7 +122,7 @@ function receiveMessage(event) {
   if (event.isTrusted && typeof event.data === 'object') {
     switch (event.data.type) {
       case 'OPEN_DOCUMENT':
-        event.target.readerControl.loadDocument(event.data.file)
+        instance.loadDocument(event.data.file)
         break;
       default:
         break;
@@ -151,7 +151,7 @@ export default class WebViewer extends LightningElement {
     };
 
     const viewerElement = this.template.querySelector('div');
-    const viewer = new PDFTron.WebViewer({
+    const viewer = new WebViewer({
       path: myObj.libUrl,
       fullAPI: myObj.fullAPI,
       custom: JSON.stringify(myObj),
