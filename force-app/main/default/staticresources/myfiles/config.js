@@ -1,8 +1,8 @@
-var resourceURL = '/resource/'
+const resourceURL = '/resource/'
 window.CoreControls.forceBackendType('ems');
 
-var urlSearch = new URLSearchParams(location.hash)
-var custom = JSON.parse(urlSearch.get('custom'));
+const urlSearch = new URLSearchParams(location.hash)
+const custom = JSON.parse(urlSearch.get('custom'));
 resourceURL = resourceURL + custom.namespacePrefix;
 
 /**
