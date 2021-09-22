@@ -29,7 +29,6 @@ if (custom.fullAPI) {
 window.CoreControls.setExternalPath(resourceURL + 'external')
 window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 
-
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
