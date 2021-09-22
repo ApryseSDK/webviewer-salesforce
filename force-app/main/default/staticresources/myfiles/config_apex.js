@@ -33,6 +33,11 @@ window.CoreControls.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID
 window.addEventListener("message", receiveMessage, false);
 
 function receiveMessage(event) {
+  /**
+   * @note If you are using WebViewer version <= 7.x, please uncomment the line
+   * below
+   */
+  // const instance = readerControl;
   if (event.isTrusted && typeof event.data === 'object') {
     switch (event.data.type) {
       case 'OPEN_DOCUMENT':
