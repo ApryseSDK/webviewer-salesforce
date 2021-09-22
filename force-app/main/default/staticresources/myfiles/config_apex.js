@@ -1,4 +1,4 @@
-const resourceURL = '/resource/'
+let resourceURL = '/resource/'
 /**
  * @note If you are using WebViewer <= 7.x, please uncomment the line below, and
  * comment out the line below that
