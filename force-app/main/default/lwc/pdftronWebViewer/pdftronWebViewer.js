@@ -39,13 +39,13 @@ export default class PdftronWebViewer extends LightningElement {
     .catch(console.error);
   }
   initUI() {
-    var myObj = {
+    const myObj = {
       libUrl: libUrl,
       fullAPI: this.fullAPI,
       namespacePrefix: '',
     };
 
-    var url = myfilesUrl + '/webviewer-demo-annotated.pdf';
+    const url = myfilesUrl + '/webviewer-demo-annotated.pdf';
     // var url = myfilesUrl + '/webviewer-demo-annotated.xod';
     // var url = myfilesUrl + '/word.docx';
 
