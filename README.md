@@ -24,8 +24,7 @@ git clone git@github.com:PDFTron/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
-3. Extract `WebViewer.zip`, `cd` to the directory the contents were extracted
-into, and run the following optimization script:
+3. [Optional] - If you do not need to upgrade/downgrade to a different version you can skip to step 5. Otherwise, extract `WebViewer.zip`, `cd` to the directory the contents were extracted
 
 ```
 $ npm run optimize
@@ -53,7 +52,7 @@ details on when you may need to enable it, see:
 
 https://www.pdftron.com/documentation/web/guides/full-api-overview/
 
-4. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
+4. [Optional] - Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
 ![Zip files][zip_files]
 
