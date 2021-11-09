@@ -1,0 +1,62 @@
+<template>
+    <div class="slds-grid slds-grid--vertical-stretch slds-p-bottom_x-small">
+        <template if:false={loadFinished}>
+            <div class="spinnerContainer">
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </div>
+        </template>
+        <div id="attachmentCombobox" class="slds-col slds-size_11-of-12">
+            <c-lookup onsearch={handleSearch} onselectionchange={handleSingleSelectionChange}
+                placeholder="Open File in WebViewer...">
+            </c-lookup>
+        </div>
+        <div id="fileUploader" class="slds-col slds-size_1-of-12 slds-p-left_xx-small">
+            <!-- lightning button for open modal window -->
+            <div>
+                <lightning-button-group>
+                    <lightning-button-icon icon-name="utility:add" onclick={openModal} variant="border-filled">
+                    </lightning-button-icon>
+                </lightning-button-group>
+            </div>
+            <!--Use template if:true to display/hide popup based on isModalOpen value-->
+            <template if:true={isModalOpen}>
+                <!-- Modal/Popup Box LWC starts here -->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- Modal/Popup Box LWC header here -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                    size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Document
+                                Toolbox</h2>
+                        </header>
+                        <!-- Modal/Popup Box LWC body starts here -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning-card title="Upload Attachments">
+                                <!-- File Picker -->
+                                <div class="slds-align_absolute-center">
+                                    <lightning-file-upload class="slds-p-top_xxx-small" label="Attach document"
+                                        name="fileUploader" accept={acceptedFormats} record-id={recordId}
+                                        onuploadfinished={handleUploadFinished} multiple></lightning-file-upload>
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <!-- Modal/Popup Box LWC footer starts here -->
+                        <footer class="slds-modal__footer">
+                            <div class="slds-align_absolute-center">
+                                <button class="slds-button slds-button_neutral" onclick={closeModal}
+                                    title="Cancel">Close</button>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+    </div>
+</template>

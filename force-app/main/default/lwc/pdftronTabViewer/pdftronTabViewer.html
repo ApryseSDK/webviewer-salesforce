@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Documents" icon-name="doctype:pdf">
+        <div class="slds-p-left_small slds-p-right_small slds-p-bottom_small">
+            <p>{receivedMessage}</p>
+            <template if:true={showTabs}>
+                <lightning-tabset>
+                    <template for:each={tabs} for:item="tab">
+                        <lightning-tab key={tab.value} label={tab.label} value={tab.value} onactive={handleActive}>
+                        </lightning-tab>
+                    </template>
+                </lightning-tabset>
+                <div>
+                    <p>Current link: {currentLink}</p>
+                </div>
+                <c-pdftron-wv-instance></c-pdftron-wv-instance>
+            </template>
+            <template if:false={showTabs}>
+                <p>No documents selected.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
