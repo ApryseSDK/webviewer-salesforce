@@ -8,7 +8,7 @@ the instructions below.
 
 ## Requirements
 
-* [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download) (Download `WebViewer.zip`)
+* [Optional] - [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download) (Download `WebViewer.zip`)
 * [Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
 * [Node and NPM](https://nodejs.org/en/)
 
@@ -24,8 +24,7 @@ git clone git@github.com:PDFTron/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
-3. Extract `WebViewer.zip`, `cd` to the directory the contents were extracted
-into, and run the following optimization script:
+3. [Optional] - If you do not need to upgrade/downgrade to a different version you can skip to step 5. Otherwise, extract `WebViewer.zip`, `cd` to the directory the contents were extracted
 
 ```
 $ npm run optimize
@@ -53,7 +52,7 @@ details on when you may need to enable it, see:
 
 https://www.pdftron.com/documentation/web/guides/full-api-overview/
 
-4. Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
+4. [Optional] - Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
 ![Zip files][zip_files]
 
@@ -122,7 +121,7 @@ function receiveMessage(event) {
   if (event.isTrusted && typeof event.data === 'object') {
     switch (event.data.type) {
       case 'OPEN_DOCUMENT':
-        event.target.readerControl.loadDocument(event.data.file)
+        instance.loadDocument(event.data.file)
         break;
       default:
         break;
@@ -151,7 +150,7 @@ export default class WebViewer extends LightningElement {
     };
 
     const viewerElement = this.template.querySelector('div');
-    const viewer = new PDFTron.WebViewer({
+    const viewer = new WebViewer({
       path: myObj.libUrl,
       fullAPI: myObj.fullAPI,
       custom: JSON.stringify(myObj),
