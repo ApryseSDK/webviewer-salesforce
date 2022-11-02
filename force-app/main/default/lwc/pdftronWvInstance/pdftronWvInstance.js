@@ -39,6 +39,7 @@ export default class PdftronWvInstance extends LightningElement {
     registerListener('blobSelected', this.handleBlobSelected, this);
     registerListener('closeDocument', this.closeDocument, this);
     registerListener('downloadDocument', this.downloadDocument, this);
+    registerListener('fileSelected', this.handleFileSelected, this);
     window.addEventListener('message', this.handleReceiveMessage.bind(this), false);
   }
 
@@ -77,6 +78,10 @@ export default class PdftronWvInstance extends LightningElement {
     .catch(console.error);
   }
 
+  handleFileSelected(file) {
+    this.iframeWindow.postMessage({type: 'OPEN_DOCUMENT', file: file}, '*')
+  }
+
   handleInitWithCurrentUser() {
     getUser()
     .then((result) => {
@@ -111,6 +116,7 @@ export default class PdftronWvInstance extends LightningElement {
       enableFilePicker: this.enableFilePicker,
       enableRedaction: this.enableRedaction,
       enableMeasurement: this.enableMeasurement,
+      enableOptimizedWorkers: false
       // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
