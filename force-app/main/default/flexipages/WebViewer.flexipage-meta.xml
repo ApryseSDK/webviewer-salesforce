@@ -12,7 +12,7 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>pdftronWebViewer</componentName>
+                <componentName>pdftronWvInstance</componentName>
             </componentInstance>
         </itemInstances>
         <name>region3</name>
