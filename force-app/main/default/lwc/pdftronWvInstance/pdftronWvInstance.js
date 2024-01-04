@@ -116,7 +116,7 @@ export default class PdftronWvInstance extends LightningElement {
       enableFilePicker: this.enableFilePicker,
       enableRedaction: this.enableRedaction,
       enableMeasurement: this.enableMeasurement,
-      enableOptimizedWorkers: false
+      enableOptimizedWorkers: true,
       // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
