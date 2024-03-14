@@ -59,6 +59,7 @@ export default class PdftronWebViewer extends LightningElement {
       enableFilePicker: this.enableFilePicker,
       enableRedaction: this.enableRedaction,
       enableMeasurement: this.enableMeasurement,
+      enableOptimizedWorkers: true,
       // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
