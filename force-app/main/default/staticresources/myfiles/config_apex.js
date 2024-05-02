@@ -10,6 +10,7 @@ resourceURL = resourceURL + custom.namespacePrefix;
  * optimized source code specific for the Salesforce platform, to ensure the
  * uploaded files stay under the 5mb limit
  */
+window.instance.UI.setFontPath('../../../..' + resourceURL + 'font_assets/fonts');
 // office workers
 window.Core.setOfficeWorkerPath(resourceURL + 'office')
 window.Core.setOfficeAsmPath(resourceURL + 'office_asm');
@@ -25,6 +26,7 @@ if (custom.fullAPI) {
 
 // external 3rd party libraries
 window.Core.setExternalPath(resourceURL + 'external')
+
 window.Core.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 
 let currentDocId;
