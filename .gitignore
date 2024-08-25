@@ -36,3 +36,6 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+#salesforce local tracking
+.sf/

@@ -1,13 +1,12 @@
-import { LightningElement, wire, track, api } from 'lwc';
-import { CurrentPageReference } from 'lightning/navigation';
-import { loadScript } from 'lightning/platformResourceLoader';
+import getUser from '@salesforce/apex/PDFTron_ContentVersionController.getUser';
+import saveDocument from '@salesforce/apex/PDFTron_ContentVersionController.saveDocument';
 import libUrl from '@salesforce/resourceUrl/lib';
 import myfilesUrl from '@salesforce/resourceUrl/myfiles';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import mimeTypes from './mimeTypes'
 import { fireEvent, registerListener, unregisterAllListeners } from 'c/pubsub';
-import saveDocument from '@salesforce/apex/PDFTron_ContentVersionController.saveDocument';
-import getUser from '@salesforce/apex/PDFTron_ContentVersionController.getUser';
+import { CurrentPageReference } from 'lightning/navigation';
+import { loadScript } from 'lightning/platformResourceLoader';
+import { api, LightningElement, wire } from 'lwc';
+import mimeTypes from './mimeTypes';
 
 function _base64ToArrayBuffer(base64) {
   var binary_string =  window.atob(base64);
@@ -117,7 +116,7 @@ export default class PdftronWvInstance extends LightningElement {
       enableRedaction: this.enableRedaction,
       enableMeasurement: this.enableMeasurement,
       enableOptimizedWorkers: true,
-      l: 'demo:1687292108130:7d9e5a710300000000e28dbec6b9476e94429e6b469910fb9cfbeaa27b',
+      // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
     viewerElement.addEventListener('ready', () => {
