@@ -11,10 +11,17 @@ resourceURL = resourceURL + custom.namespacePrefix;
  * uploaded files stay under the 5mb limit
  */
 window.instance.UI.setFontPath('../../../..' + resourceURL + 'font_assets/fonts');
+
 // office workers
 window.Core.setOfficeWorkerPath(resourceURL + 'office')
 window.Core.setOfficeAsmPath(resourceURL + 'office_asm');
 window.Core.setOfficeResourcePath(resourceURL + 'office_resource');
+
+//office editing
+window.Core.setOfficeEditorWorkerPath(resourceURL + 'office_edit');
+
+window.Core.ContentEdit.setWorkerPath(resourceURL + 'content_edit');
+window.Core.ContentEdit.setResourcePath(resourceURL + 'content_edit_resource');
 
 // pdf workers
 window.Core.setPDFResourcePath(resourceURL + 'resource')
@@ -26,8 +33,6 @@ if (custom.fullAPI) {
 
 // external 3rd party libraries
 window.Core.setExternalPath(resourceURL + 'external')
-
-window.Core.setCustomFontURL('https://pdftron.s3.amazonaws.com/custom/ID-zJWLuhTffd3c/vlocity/webfontsv20/');
 
 let currentDocId;
 
@@ -95,6 +100,22 @@ const downloadFile = (blob, fileName) => {
   setTimeout(() => URL.revokeObjectURL(link.href), 7000);
 };
 
+function createSavedModal(instance) {
+  const divInput = document.createElement('div');
+  divInput.innerText = 'File saved successfully.';
+  const modal = {
+    dataElement: 'savedModal',
+    body: {
+      className: 'myCustomModal-body',
+      style: {
+        'text-align': 'center'
+      },
+      children: [divInput]
+    }
+  }
+  instance.UI.addCustomModal(modal);
+}
+
 window.addEventListener('viewerLoaded', async function () {
   instance.UI.hotkeys.on('ctrl+s, command+s', e => {
     e.preventDefault();
@@ -119,6 +140,8 @@ window.addEventListener('viewerLoaded', async function () {
   // pdftronWvInstance code to pass User Record information to this config file
   // to invoke annotManager.setCurrentUser
   instance.Core.documentViewer.getAnnotationManager().setCurrentUser(custom.username);
+  instance.UI.enableFeatures([instance.UI.Feature.ContentEdit]);
+  createSavedModal(instance);
 });
 
 window.addEventListener("message", receiveMessage, false);
@@ -127,11 +150,8 @@ function receiveMessage(event) {
   if (event.isTrusted && typeof event.data === 'object') {
     switch (event.data.type) {
       case 'OPEN_DOCUMENT':
-        instance.UI.loadDocument(event.data.file, {
-          officeOptions: {
-            disableBrowserFontSubstitution: true,
-          }
-        })
+        console.log(event.data.file);
+        instance.UI.loadDocument(event.data.file)
         break;
       case 'OPEN_DOCUMENT_BLOB':
         const { blob, extension, filename, documentId } = event.data.payload;

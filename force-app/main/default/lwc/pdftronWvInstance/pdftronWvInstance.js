@@ -44,7 +44,7 @@ export default class PdftronWvInstance extends LightningElement {
 
   disconnectedCallback() {
     unregisterAllListeners(this);
-    window.removeEventListener('message', this.handleReceiveMessage, true);
+    window.removeEventListener('message', this.handleReceiveMessage);
   }
 
   handleBlobSelected(record) {
@@ -106,7 +106,7 @@ export default class PdftronWvInstance extends LightningElement {
 
     const viewerElement = this.template.querySelector('div')
     // eslint-disable-next-line no-unused-vars
-    const viewer = new WebViewer({
+    const viewer = new WebViewer.Iframe({
       path: libUrl, // path to the PDFTron 'lib' folder on your server
       custom: JSON.stringify(myObj),
       backendType: 'ems',
@@ -116,6 +116,7 @@ export default class PdftronWvInstance extends LightningElement {
       enableRedaction: this.enableRedaction,
       enableMeasurement: this.enableMeasurement,
       enableOptimizedWorkers: true,
+      loadAsPDF: true,
       // l: 'YOUR_LICENSE_KEY_HERE',
     }, viewerElement);
 
