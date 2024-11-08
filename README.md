@@ -1,5 +1,5 @@
-# How to Add a PDFTron WebViewer to Salesforce as a Lightning Web Component
-This project contains the source code for this [blog post](https://www.pdftron.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc/) or you can [watch a video](https://youtu.be/NdRg-RnlC5g) instead.
+# How to Add an Apryse WebViewer to Salesforce as a Lightning Web Component
+This project contains the source code for this [blog post](https://apryse.com/blog/webviewer/add-pdf-viewer-editor-to-salesforce-as-lwc-v2) or you can [watch a video](https://youtu.be/NdRg-RnlC5g) instead.
 
 ![WebViewer][webviewer]
 
@@ -8,7 +8,7 @@ the instructions below.
 
 ## Requirements
 
-* [Optional] - [PDFTron WebViewer](https://www.pdftron.com/documentation/web/download) (Download `WebViewer.zip`)
+* [Optional] - [Apryse WebViewer](https://docs.apryse.com/web/download/) (Download `WebViewer.zip`)
 * [Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
 * [Node and NPM](https://nodejs.org/en/)
 
@@ -20,7 +20,7 @@ the instructions below.
 
 2. Clone the `webviewer-salesforce` from Github repo:
 ```
-git clone git@github.com:PDFTron/webviewer-salesforce.git
+git clone https://github.com/ApryseSDK/webviewer-salesforce.git
 cd webviewer-salesforce
 ```
 
@@ -31,17 +31,25 @@ $ npm run optimize
 
 Optimize: Do you want us to backup your files before optimizing? [y/n]:  y
 
-Optimize: Will you be using WebViewer Server? See https://www.pdftron.com/documentation/web/guides/wv-server/ for more info. [y/n]:  n
+Optimize: Will you be using WebViewer Server? See https://docs.apryse.com/documentation/web/guides/wv-server/ for more info. [y/n]:  n
 
-Optimize: Will you be converting all your documents to XOD? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info. [y/n]:  n
+Optimize: Will you be converting all your documents to XOD? See https://docs.apryse.com/documentation/web/guides/optimize-lib-folder for more info. [y/n]:  n
 
 Optimize: Do you need client side office support? [y/n]:  y
 
-Optimize: Do you need the full PDF API? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
+Optimize: Do you need client side office support for legacy office files (doc, ppt, xls)? [y/n]:  y
 
-Optimize: Do you want to use the production version of PDFNet.js? The production version does not have type checking and console messages, but is much smaller than the development version. [y/n]:  n
+Optimize: Do you need the full PDF API? See https://docs.apryse.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
 
-Optimize: Do you need to deploy to Salesforce? See https://www.pdftron.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
+Optimize: Do you want to use the production version of PDFNet.js? The production version does not have type checking and console messages, but is much smaller than the development version. [y/n]:  y
+
+Optimize: Do you need to use the content editing feature? (This is for editing content on the page in the viewer) [y/n]:  y
+
+Optimize: Do you need to use the office editing feature? (This is for editing docx files in the viewer) [y/n]:  y
+
+Optimize: Do you need to deploy to Salesforce? See https://docs.apryse.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
+
+Optimize: Would you like to use the web component version of WebViewer (instead of the iframe)? [y/n]:  n
 ```
 
 This optimization process produces zip files of size 5 MB or less, which enables
@@ -50,7 +58,7 @@ you to safely upload to the Salesforce platform.
 Note that in certain circumstances, you may need the full PDF API. For more
 details on when you may need to enable it, see:
 
-https://www.pdftron.com/documentation/web/guides/full-api-overview/
+https://docs.apryse.com/web/guides/full-api-overview/
 
 4. [Optional] - Copy all the zip files from `webviewer-salesforce` folder, which were generated after running above npm optimization script, into `force-app/main/default/staticresources`.
 
@@ -61,7 +69,7 @@ the contents of each `.xml` file are the same.
 
 5. If you have a paid license key, you can remove the watermark from rendered
 documents by adding the key to the `PDFTron.WebViewer` constructor here
-[`./force-app/main/default/lwc/webViewer/webViewer.js`](./force-app/main/default/lwc/webViewer/webViewer.js#L53).
+[`./force-app/main/default/lwc/pdftronWebViewer/pdftronWebViewer.js`](./force-app/main/default/lwc/pdftronWebViewer/pdftronWebViewer.js#L53).
 
 6. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
 ```
@@ -83,9 +91,9 @@ sfdx force:source:push -f
 sfdx force:org:open
 ```
 
-10. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click PDFTron.
+10. Click the app launcher icon ![App Launcher icon][app_launcher] to open the App Launcher, then click Apryse.
 
-![PDFTron app][pdftron_app]
+![Apryse app][apryse_app]
 
 ![WebViewer][webviewer]
 
@@ -166,7 +174,7 @@ export default class WebViewer extends LightningElement {
 ```
 
 [zip_files]: https://www.pdftron.com/static/152614d12bf83c31602bb8f5e4eef27c/zip-files.png "Zip files"
-[pdftron_app]: misc/pdftron_app.png "PDFTron app"
+[apryse_app]: misc/apryse_app.png "Apryse app"
 [webviewer]: misc/webviewer.png "WebViewer"
 [app_launcher]: misc/app_launcher.png "App Launcher"
 ![](https://onepixel.pdftron.com/webviewer-salesforce)
