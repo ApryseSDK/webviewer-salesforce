@@ -41,11 +41,11 @@ Optimize: Do you need client side office support for legacy office files (doc, p
 
 Optimize: Do you need the full PDF API? See https://docs.apryse.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
 
-Optimize: Do you want to use the production version of PDFNet.js? The production version does not have type checking and console messages, but is much smaller than the development version. [y/n]:  y
+Optimize: Do you want to use the production version of PDFNet.js? The production version does not have type checking and console messages, but is much smaller than the development version. [y/n]:  n
 
-Optimize: Do you need to use the content editing feature? (This is for editing content on the page in the viewer) [y/n]:  y
+Optimize: Do you need to use the content editing feature? (This is for editing content on the page in the viewer) [y/n]:  n
 
-Optimize: Do you need to use the office editing feature? (This is for editing docx files in the viewer) [y/n]:  y
+Optimize: Do you need to use the office editing feature? (This is for editing docx files in the viewer) [y/n]:  n
 
 Optimize: Do you need to deploy to Salesforce? See https://docs.apryse.com/documentation/web/guides/optimize-lib-folder for more info (most users dont need this option). [y/n]:  y
 
